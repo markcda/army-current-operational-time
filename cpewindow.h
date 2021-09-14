@@ -24,6 +24,14 @@ public:
 
 private:
   cdata *cd = nullptr;
-  QDateTime cdatetime, rtime;
+  QDateTime *cdatetime = nullptr, *rtime = nullptr;
+  QStringList comms = QStringList({"15", "25", "35", "45", "115", "125", "135", "145"});
+  
+  QLabel *lC = nullptr;
+  AnalogClock *lclock = nullptr, *rclock = nullptr;
+  
+  void showDialog();
+  virtual void closeEvent(QCloseEvent *event) override;
+  void updateInfo();
 };
 #endif // CPEWINDOW_H

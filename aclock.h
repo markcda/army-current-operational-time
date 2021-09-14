@@ -20,10 +20,12 @@ public:
       timer->start(1000);
     });
     timer->start(1000);
-    resize(200, 200);
+    resize(300, 300);
   }
 
   ~AnalogClock() { delete timer; }
+
+  void setTime(QTime time) { _ctime = time; }
 
 protected:
   void paintEvent(QPaintEvent *event) {
@@ -39,13 +41,13 @@ protected:
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
     painter.translate(width() / 2, height() / 2);
-    painter.scale(side / 200.0, side / 200.0);
-    
+    painter.scale(side / 300.0, side / 300.0);
+
     painter.setPen(Qt::NoPen);
     painter.setBrush(greyColor);
     painter.save();
-    painter.drawEllipse(-100, -100, 200, 200);
-    
+    painter.drawEllipse(-150, -150, 300, 300);
+
     painter.setPen(Qt::NoPen);
     painter.setBrush(rideColor);
     painter.save();
@@ -55,7 +57,7 @@ protected:
     painter.setPen(rideColor);
 
     for (int i = 0; i < 12; ++i) {
-      painter.drawLine(88, 0, 96, 0);
+      painter.drawLine(132, 0, 144, 0);
       painter.rotate(30.0);
     }
     painter.setPen(Qt::NoPen);
@@ -69,15 +71,15 @@ protected:
 
     for (int j = 0; j < 60; ++j) {
       if ((j % 5) != 0)
-        painter.drawLine(92, 0, 96, 0);
+        painter.drawLine(138, 0, 144, 0);
       painter.rotate(6.0);
     }
-    
+
     painter.setPen(Qt::NoPen);
     painter.setBrush(greyColor);
     painter.save();
-    painter.drawEllipse(-2, -2, 4, 4);
-    
+    painter.drawEllipse(-3, -3, 6, 6);
+
     event->accept();
   }
 

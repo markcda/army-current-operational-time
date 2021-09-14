@@ -11,7 +11,7 @@ CPEWindow::CPEWindow(QWidget *parent) : QMainWindow(parent) {
   auto *clt = new QGridLayout();
   lC = new QLabel(
       "Команда " + comms[cd->cmnd] + ". Время \"Ч\" - " +
-          QLocale::system().toString(cd->CHplus, "hh:mm, d MMMM yyyy."),
+          QLocale::system().toString(cd->CHplus, "hh:mm, d MMMM yyyy") + " г.",
       this);
   lC->setStyleSheet("color: \"#d0d000\";");
   lC->setFixedHeight(100);
@@ -67,8 +67,8 @@ CPEWindow::CPEWindow(QWidget *parent) : QMainWindow(parent) {
           [this, timer, wlclock, wrclock, ld, rd]() {
             wlclock->setText(QLocale::system().toString(*cdatetime, "hh:mm:ss"));
             wrclock->setText(QLocale::system().toString(*rtime, "hh:mm:ss"));
-            ld->setText(QLocale::system().toString(*cdatetime, "d MMMM yyyy"));
-            rd->setText(QLocale::system().toString(*rtime, "d MMMM yyyy"));
+            ld->setText(QLocale::system().toString(*cdatetime, "d MMMM yyyy") + " г.");
+            rd->setText(QLocale::system().toString(*rtime, "d MMMM yyyy") + " г.");
             auto tc = QDateTime(cdatetime->addMSecs(1000));
             delete cdatetime;
             cdatetime = new QDateTime(tc);
@@ -91,7 +91,7 @@ void CPEWindow::closeEvent(QCloseEvent *event) {
 void CPEWindow::updateInfo() {
   setWindowTitle("ПОПУПД-АиОВдКШТ-" + comms[cd->cmnd] + "-А.ТКА2021");
   lC->setText("Команда " + comms[cd->cmnd] + ". Время \"Ч\" - " +
-              QLocale::system().toString(cd->CHplus, "hh:mm, d MMMM yyyy."));
+              QLocale::system().toString(cd->CHplus, "hh:mm, d MMMM yyyy.") + " г.");
   auto rt = cdatetime->addMSecs(cd->substract);
   delete rtime;
   rtime = new QDateTime(rt);

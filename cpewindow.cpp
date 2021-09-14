@@ -16,9 +16,10 @@ CPEWindow::CPEWindow(QWidget *parent) : QMainWindow(parent) {
   lC->setStyleSheet("color: \"#d0d000\";");
   lC->setFixedHeight(100);
   QFont font;
-  font.setPointSize(42);
+  font.setPointSize(40);
   lC->setFont(font);
   font.setPointSize(28);
+  lC->setAlignment(Qt::AlignHCenter);
   clt->addWidget(lC, 0, 0, 1, 2);
   auto *lAstro = new QLabel("АСТРОНОМИЧЕСКОЕ ВРЕМЯ", this);
   auto *lOpera = new QLabel("ОПЕРАТИВНОЕ ВРЕМЯ", this);
